@@ -5,94 +5,168 @@
   <title>Amit Weds Kirti</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #fff5e6, #ffe6cc);
-      text-align: center;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #fff5e6, #ffe6cc);
+    text-align: center;
+    overflow-x: hidden;
+  }
 
-    .container {
-      padding: 20px;
-    }
+  .side-img {
+    position: fixed;
+    top: 30px;
+    width: 180px;
+    opacity: 0.95;
+    z-index: 0;
+  }
 
-    .card {
-      max-width: 500px;
-      margin: auto;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      padding: 15px;
-    }
+  .left-img { left: 20px; }
+  .right-img { right: 20px; }
 
-    img {
-      width: 100%;
-      border-radius: 15px;
-    }
+  @media (max-width: 1024px) {
+    .side-img { width: 140px; }
+  }
 
-    h1 {
-      color: #b35900;
-      margin-top: 20px;
-    }
+  @media (max-width: 768px) {
+    .side-img { display: none; }
+  }
 
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      font-size: 18px;
-      color: white;
-      background: linear-gradient(45deg, #ff6600, #cc3300);
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
+  .container {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+  }
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: linear-gradient(45deg, #cc3300, #ff6600);
-    }
+  .card {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: 15px;
+  }
 
-    /* Popup */
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  img.main-img {
+    width: 100%;
+    border-radius: 15px;
+  }
 
-    .popup-content {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-    }
+  h1 {
+    color: #b35900;
+    margin: 0;
+  }
 
-    .popup button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background: #ff6600;
-      color: white;
-    }
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
 
-    .hidden {
-      display: none;
+  .title-img {
+    width: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .title-img {
+      width: 35px;
     }
-  </style>
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: white;
+    background: linear-gradient(45deg, #ff6600, #cc3300);
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .popup button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ff6600;
+    color: white;
+  }
+
+  .bottom-left {
+    left: 20px;
+    top: auto;
+    bottom: 30px;
+  }
+
+  .bottom-right {
+    right: 20px;
+    top: auto;
+    bottom: 30px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #ganeshaSection img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+  }
+
+  #ganeshaSection p {
+    font-size: 18px;
+    color: #8b0000;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+</style>
 </head>
 
 <body>
+
+<!-- 🎵 Background Music -->
+<audio id="bgMusic" autoplay loop muted>
+  <source src="wedding-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Side Decorations -->
+<img src="sidepic1-removebg-preview.png" class="side-img left-img">
+<img src="sidepic2-removebg-preview.png" class="side-img right-img">
+
+<!-- <img src="bottom-leftside-image-removebg-preview.png" class="side-img bottom-left">
+<img src="bottom-rightside-image-removebg-preview.png" class="side-img bottom-right"> -->
 
 <!-- Language Popup -->
 <div id="popup" class="popup">
@@ -105,18 +179,34 @@
 
 <div class="container hidden" id="mainContent">
   <div class="card">
-    <!-- Replace this path if needed -->
-    <img src="Amit_wedding_invitation_card.jpeg" alt="Wedding Invitation">
 
-    <h1 id="title"></h1>
+    <!-- 🕉️ Marathi Only -->
+    <div id="ganeshaSection" style="display:none;">
+      <img src="https://img.freepik.com/premium-photo/ganesha-aum-hindu-wedding-card-diwali-india_997657-2100.jpg">
+      <p>
+        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+        निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+      </p>
+    </div>
 
+    <!-- Invitation -->
+    <img src="Amit_wedding_invitation_card.jpeg" class="main-img">
+
+    <!-- Title -->
+    <div class="title-wrapper">
+      <img src="bottom-leftside-image-removebg-preview.png" class="title-img">
+      <h1 id="title"></h1>
+      <img src="bottom-rightside-image-removebg-preview.png" class="title-img">
+    </div>
+
+    <!-- Button -->
     <a 
-      href="https://maps.app.goo.gl/6v3DxCXcDvzR2pAF9" 
+      href="https://maps.app.goo.gl/4vidZrXgnBan2KW19" 
       target="_blank" 
       class="btn"
-      id="mapBtn"
-    >
+      id="mapBtn">
     </a>
+
   </div>
 </div>
 
@@ -125,12 +215,18 @@
     document.getElementById("popup").style.display = "none";
     document.getElementById("mainContent").classList.remove("hidden");
 
+    let music = document.getElementById("bgMusic");
+    music.muted = false;
+    music.play();
+
     if (lang === 'en') {
-      document.getElementById("title").innerText = "Amit Weds Kirti 💍";
+      document.getElementById("title").innerText = "Amit Weds Kirti";
       document.getElementById("mapBtn").innerText = "📍 View Amit's Wedding Location";
+      document.getElementById("ganeshaSection").style.display = "none";
     } else {
-      document.getElementById("title").innerText = "अमित आणि कीर्ती 💍";
+      document.getElementById("title").innerText = "अमित आणि कीर्ती";
       document.getElementById("mapBtn").innerText = "📍 अमितच्या लग्नाचे ठिकाण पहा";
+      document.getElementById("ganeshaSection").style.display = "block";
     }
   }
 </script>
