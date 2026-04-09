@@ -1,172 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Amit Weds Kirti</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Amit Weds Kirti</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #fff5e6, #ffe6cc);
-    text-align: center;
-    overflow-x: hidden;
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fff5e6, #ffe6cc);
+  scroll-behavior: smooth;
+}
 
-  .side-img {
-    position: fixed;
-    top: 30px;
-    width: 180px;
-    opacity: 0.95;
-    z-index: 0;
-  }
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #b35900;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1000;
+}
 
-  .left-img { left: 20px; }
-  .right-img { right: 20px; }
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
 
-  @media (max-width: 1024px) {
-    .side-img { width: 140px; }
-  }
+/* Layout */
+.container {
+  padding: 20px;
+  text-align: center;
+}
 
-  @media (max-width: 768px) {
-    .side-img { display: none; }
-  }
+.card {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+}
 
-  .container {
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-  }
+/* Ganesha */
+#ganeshaSection img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 15px;
+}
 
-  .card {
-    max-width: 500px;
-    margin: auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    padding: 15px;
-  }
+/* Sections */
+.section {
+  margin-top: 40px;
+  text-align: center;
+}
 
-  img.main-img {
-    width: 100%;
-    border-radius: 15px;
-  }
+/* Event Cards */
+.sub-section {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #fff8f0, #ffe6cc);
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
 
-  h1 {
-    color: #b35900;
-    margin: 0;
-  }
+.sub-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(45deg, #ff9933, #cc3300);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
 
-  .title-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
+.sub-section b {
+  font-size: 20px;
+  color: #b35900;
+}
 
-  .title-img {
-    width: 50px;
-  }
+.sub-section span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #cc3300;
+}
 
-  @media (max-width: 768px) {
-    .title-img {
-      width: 35px;
-    }
-  }
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: white;
+  background: linear-gradient(45deg, #ff6600, #cc3300);
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 
-  .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 25px;
-    font-size: 18px;
-    color: white;
-    background: linear-gradient(45deg, #ff6600, #cc3300);
-    border-radius: 30px;
-    text-decoration: none;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: 0.3s;
-  }
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .btn:hover {
-    transform: scale(1.1);
-  }
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
 
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.popup button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #ff6600;
+  color: white;
+  cursor: pointer;
+}
 
-  .popup-content {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-  }
+/* ✅ CENTERED Welcome Popup */
+.welcome-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #b35900;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 20px;
+  font-size: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  z-index: 2000;
+  text-align: center;
+  animation: fadeInOut 3s ease forwards;
+}
 
-  .popup button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    background: #ff6600;
-    color: white;
-  }
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -70%); }
+  10% { opacity: 1; transform: translate(-50%, -50%); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -70%); }
+}
 
-  .bottom-left {
-    left: 20px;
-    top: auto;
-    bottom: 30px;
-  }
-
-  .bottom-right {
-    right: 20px;
-    top: auto;
-    bottom: 30px;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  #ganeshaSection img {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 10px;
-  }
-
-  #ganeshaSection p {
-    font-size: 18px;
-    color: #8b0000;
-    font-weight: 500;
-    line-height: 1.6;
-  }
+.hidden { display: none; }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 Background Music -->
+<!-- Welcome Popup -->
+<div id="welcomePopup" class="welcome-popup hidden">
+  <p id="welcomeText"></p>
+</div>
+
+<!-- Music -->
 <audio id="bgMusic" autoplay loop muted>
   <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
-
-<!-- Side Decorations -->
-<img src="sidepic1-removebg-preview.png" class="side-img left-img">
-<img src="sidepic2-removebg-preview.png" class="side-img right-img">
-
-<!-- <img src="bottom-leftside-image-removebg-preview.png" class="side-img bottom-left">
-<img src="bottom-rightside-image-removebg-preview.png" class="side-img bottom-right"> -->
 
 <!-- Language Popup -->
 <div id="popup" class="popup">
@@ -177,58 +198,178 @@
   </div>
 </div>
 
+<!-- Navbar -->
+<div id="navbar" class="navbar hidden">
+  <a href="#events" id="navEvents"></a>
+  <a href="#engagement" id="navEng"></a>
+  <a href="#haladi" id="navHaladi"></a>
+  <a href="#wedding" id="navWedding"></a>
+  <a href="#contacts" id="navContact"></a>
+</div>
+
 <div class="container hidden" id="mainContent">
-  <div class="card">
 
-    <!-- 🕉️ Marathi Only -->
-    <div id="ganeshaSection" style="display:none;">
-      <img src="https://img.freepik.com/premium-photo/ganesha-aum-hindu-wedding-card-diwali-india_997657-2100.jpg">
-      <p>
-        वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
-        निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
-      </p>
-    </div>
+<div class="card">
 
-    <!-- Invitation -->
-    <img src="Amit_wedding_invitation_card.jpeg" class="main-img">
+<div id="ganeshaSection">
+  <img src="https://img.freepik.com/premium-photo/ganesha-aum-hindu-wedding-card-diwali-india_997657-2100.jpg">
+  <p id="ganeshaText">
+    वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
+    निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+  </p>
+</div>
 
-    <!-- Title -->
-    <div class="title-wrapper">
-      <img src="bottom-leftside-image-removebg-preview.png" class="title-img">
-      <h1 id="title"></h1>
-      <img src="bottom-rightside-image-removebg-preview.png" class="title-img">
-    </div>
+<img id="inviteImg" src="Amit_wedding_invitation_card.jpeg" style="width:100%; border-radius:15px;">
 
-    <!-- Button -->
-    <a 
-      href="https://maps.app.goo.gl/4vidZrXgnBan2KW19" 
-      target="_blank" 
-      class="btn"
-      id="mapBtn">
-    </a>
+<h1 id="title"></h1>
 
-  </div>
+<a href="https://maps.app.goo.gl/4vidZrXgnBan2KW19" target="_blank" class="btn" id="mapBtn"></a>
+
+<button onclick="toggleLang()" class="btn" id="toggleBtn"></button>
+
+</div>
+
+<!-- Events -->
+<div id="events" class="section">
+  <h2 id="eventsTitle"></h2>
+
+  <div id="engagement" class="sub-section"></div>
+  <div id="haladi" class="sub-section"></div>
+  <div id="wedding" class="sub-section"></div>
+</div>
+
+<!-- Contacts -->
+<div id="contacts" class="section">
+  <h2 id="contactTitle"></h2>
+  <p>📞 8862050557</p>
+  <p>📞 9822973770</p>
+</div>
+
 </div>
 
 <script>
-  function setLanguage(lang) {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("mainContent").classList.remove("hidden");
+let lang = '';
 
-    let music = document.getElementById("bgMusic");
-    music.muted = false;
-    music.play();
+function startCountdown(id, eventDate) {
+  function update() {
+    const now = new Date().getTime();
+    const dist = eventDate - now;
 
-    if (lang === 'en') {
-      document.getElementById("title").innerText = "Amit Weds Kirti";
-      document.getElementById("mapBtn").innerText = "📍 View Amit's Wedding Location";
-      document.getElementById("ganeshaSection").style.display = "none";
-    } else {
-      document.getElementById("title").innerText = "अमित आणि कीर्ती";
-      document.getElementById("mapBtn").innerText = "📍 अमितच्या लग्नाचे ठिकाण पहा";
-      document.getElementById("ganeshaSection").style.display = "block";
+    if (dist < 0) {
+      document.getElementById(id).innerText = "Started 🎉";
+      return;
     }
+
+    const d = Math.floor(dist / (1000*60*60*24));
+    const h = Math.floor((dist/(1000*60*60))%24);
+    const m = Math.floor((dist/(1000*60))%60);
+    const s = Math.floor((dist/1000)%60);
+
+    document.getElementById(id).innerText =
+      d+"d "+h+"h "+m+"m "+s+"s";
   }
+
+  update();
+  setInterval(update,1000);
+}
+
+function showWelcomeMessage() {
+  const popup = document.getElementById("welcomePopup");
+  const text = document.getElementById("welcomeText");
+
+  if (lang === 'en') {
+    text.innerText = "Hello!! A warm welcome from the Pardeshi family...!!!!";
+  } else {
+    text.innerText = "नमस्कार!! परदेशी परिवाराकडून तुमचं सहर्ष स्वागत आहे ...!!!!";
+  }
+
+  popup.classList.remove("hidden");
+
+  setTimeout(() => {
+    popup.classList.add("hidden");
+  }, 3000);
+}
+
+function setLanguage(l) {
+  lang = l;
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("mainContent").classList.remove("hidden");
+  document.getElementById("navbar").classList.remove("hidden");
+
+  let music = document.getElementById("bgMusic");
+  music.muted = false;
+  music.play();
+
+  showWelcomeMessage();
+  updateContent();
+}
+
+function toggleLang() {
+  lang = lang === 'en' ? 'mr' : 'en';
+  showWelcomeMessage();
+  updateContent();
+}
+
+function updateContent() {
+
+if (lang === 'en') {
+
+  document.getElementById("title").innerText = "Amit Weds Kirti";
+  document.getElementById("mapBtn").innerText = "📍 Event Location";
+  document.getElementById("toggleBtn").innerText = "मराठीत बघा";
+  document.getElementById("ganeshaText").style.display = "none";
+  document.getElementById("inviteImg").src = "Amit_wedding_invitation_card.jpeg";
+
+  document.getElementById("eventsTitle").innerText = "Events";
+  document.getElementById("contactTitle").innerText = "Contacts";
+
+  document.getElementById("navEvents").innerText = "Events";
+  document.getElementById("navEng").innerText = "Engagement";
+  document.getElementById("navHaladi").innerText = "Haladi";
+  document.getElementById("navWedding").innerText = "Wedding";
+  document.getElementById("navContact").innerText = "Contacts";
+
+  document.getElementById("engagement").innerHTML =
+    "💍 <b>Engagement Ceremony</b><br>Saturday, 25th April 2026, 04:00 PM<br>⏳ <span id='engTimer'></span>";
+
+  document.getElementById("haladi").innerHTML =
+    "🌼 <b>Haladi Ceremony</b><br>Saturday, 25th April 2026, 07:00 PM<br>⏳ <span id='halTimer'></span>";
+
+  document.getElementById("wedding").innerHTML =
+    "🔥 <b>Wedding Ceremony</b><br>Sunday, 26th April 2026, 12:37 PM<br>⏳ <span id='wedTimer'></span>";
+
+} else {
+
+  document.getElementById("title").innerText = "अमित आणि कीर्ती";
+  document.getElementById("mapBtn").innerText = "📍 विवाहस्थळ";
+  document.getElementById("toggleBtn").innerText = "Change to English";
+  document.getElementById("ganeshaText").style.display = "block";
+  document.getElementById("inviteImg").src = "Amit_wedding_invitation_card_marathi.jpeg";
+
+  document.getElementById("eventsTitle").innerText = "कार्यक्रम";
+  document.getElementById("contactTitle").innerText = "संपर्क";
+
+  document.getElementById("navEvents").innerText = "कार्यक्रम";
+  document.getElementById("navEng").innerText = "साखरपुडा";
+  document.getElementById("navHaladi").innerText = "हळदी";
+  document.getElementById("navWedding").innerText = "विवाह";
+  document.getElementById("navContact").innerText = "संपर्क";
+
+  document.getElementById("engagement").innerHTML =
+    "💍 <b>साखरपुडा समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>⏳ <span id='engTimer'></span>";
+
+  document.getElementById("haladi").innerHTML =
+    "🌼 <b>हळदी समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>⏳ <span id='halTimer'></span>";
+
+  document.getElementById("wedding").innerHTML =
+    "🔥 <b>विवाह मुहूर्त</b><br>रविवार, 26 एप्रिल 2026<br>⏳ <span id='wedTimer'></span>";
+}
+
+startCountdown("engTimer", new Date(2026,3,25,16,0).getTime());
+startCountdown("halTimer", new Date(2026,3,25,19,0).getTime());
+startCountdown("wedTimer", new Date(2026,3,26,12,37).getTime());
+
+}
 </script>
 
 </body>
