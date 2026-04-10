@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Amit Weds Kirti</title>
+<title style="">Amit Weds Kirti</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -112,7 +112,26 @@ body {
 .location-text {
   color: #b35900;
   font-weight: bold;
+  font-size: 12px;
   margin-top: 15px;
+}
+
+#title {
+  font-family: 'Playfair Display', serif;
+  font-size: 55px;
+  text-align: center;
+  color: #800000;
+  letter-spacing: 2px;
+}
+
+#eventsTitle {
+  font-family: 'Alex Brush', cursive;
+  font-size: 48px;
+  text-align: center;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212,175,55,0.6),
+               0 0 20px rgba(212,175,55,0.3);
+  margin: 50px 0;
 }
 
 /* Popup */
@@ -236,8 +255,8 @@ body {
 <div id="events" class="section">
   <h2 id="eventsTitle"></h2>
 
-  <div id="engagement" class="sub-section"></div>
-  <div id="haladi" class="sub-section"></div>
+  <div id="engagement" class="sub-section"></div><br>
+  <div id="haladi" class="sub-section"></div><br>
   <div id="wedding" class="sub-section"></div>
 </div>
 
@@ -315,10 +334,10 @@ function updateContent() {
 
 if (lang === 'en') {
 
-  document.getElementById("title").innerText = "Amit Weds Kirti";
+  document.getElementById("title").innerText = "Amit 卐 Kirti";
   document.getElementById("mapBtn").innerText = "📍 Event Location";
   document.getElementById("toggleBtn").innerText = "मराठीत बघा";
-  document.getElementById("locationText").innerText = "Click below button to see event location";
+  document.getElementById("locationText").innerText = "👇🏻 Click below button to see event location";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card.jpeg";
 
   document.getElementById("eventsTitle").innerText = "Events";
@@ -337,14 +356,14 @@ if (lang === 'en') {
     "🌼 <b>Haladi Ceremony</b><br>Saturday, 25th April 2026, 07:00 PM<br>⏳ <span id='halTimer'></span>";
 
   document.getElementById("wedding").innerHTML =
-    " <b>Wedding Ceremony</b><br>Sunday, 26th April 2026, 12:37 PM<br>⏳ <span id='wedTimer'></span>";
+  "<img src='Kalash.png' style='width:20px; vertical-align:middle;'> <b>Wedding Ceremony</b><br>Sunday, 26th April 2026, 12:37 PM<br>⏳ <span id='wedTimer'></span>";
 
 } else {
 
-  document.getElementById("title").innerText = "अमित आणि कीर्ती";
+  document.getElementById("title").innerText = "अमित 卐 किर्ती";
   document.getElementById("mapBtn").innerText = "📍 विवाहस्थळ";
   document.getElementById("toggleBtn").innerText = "View in English";
-  document.getElementById("locationText").innerText = "खालील बटणावर क्लिक करून कार्यक्रमाचे ठिकाण पहा";
+  document.getElementById("locationText").innerText = "👇🏻 खालील बटणावर क्लिक करून कार्यक्रमाचे ठिकाण पहा";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card_marathi.jpeg";
 
   document.getElementById("eventsTitle").innerText = "कार्यक्रम";
@@ -356,14 +375,14 @@ if (lang === 'en') {
   document.getElementById("navWedding").innerText = "विवाह";
   document.getElementById("navContact").innerText = "संपर्क";
 
-  document.getElementById("engagement").innerHTML =
-    "💍 <b>साखरपुडा समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>⏳ <span id='engTimer'></span>";
+ document.getElementById("engagement").innerHTML =
+  "💍 <b>साखरपुडा समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>दुपारी 04.00 वाजता<br>⏳ <span id='engTimer'></span>";
 
-  document.getElementById("haladi").innerHTML =
-    "🌼 <b>हळदी समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>⏳ <span id='halTimer'></span>";
+document.getElementById("haladi").innerHTML =
+  "🌼 <b>हळदी समारंभ</b><br>शनिवार, 25 एप्रिल 2026<br>सायंकाळी 07.00 वाजता<br>⏳ <span id='halTimer'></span>";
 
-  document.getElementById("wedding").innerHTML =
-    " <b>विवाह मुहूर्त</b><br>रविवार, 26 एप्रिल 2026<br>⏳ <span id='wedTimer'></span>";
+document.getElementById("wedding").innerHTML =
+  "<img src='Kalash.png' style='width:20px; vertical-align:middle; margin-bottom:5px;'> <b>विवाह मुहूर्त</b><br>रविवार, 26 एप्रिल 2026<br>दुपारी 12.37 वाजता<br>⏳ <span id='wedTimer'></span>";
 }
 
 startCountdown("engTimer", new Date(2026,3,25,16,0).getTime());
