@@ -26,12 +26,14 @@ body {
   z-index: 1000;
 }
 
-.navbar a {
+.navbar a, .navbar button {
   color: white;
   text-decoration: none;
   font-weight: bold;
   padding: 5px 10px;
-  white-space: nowrap;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* Layout */
@@ -48,14 +50,6 @@ body {
   padding: 20px;
 }
 
-/* Ganesha */
-#ganeshaSection img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: contain;
-  border-radius: 15px;
-}
-
 /* Sections */
 .section {
   margin-top: 40px;
@@ -70,23 +64,12 @@ body {
   background: linear-gradient(135deg, #fff8f0, #ffe6cc);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
-.sub-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(45deg, #ff9933, #cc3300);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+.sub-section:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 .sub-section b {
@@ -98,9 +81,9 @@ body {
   display: block;
   margin-top: 10px;
   font-weight: bold;
-  font-size: 16px;
   color: #cc3300;
 }
+
 
 /* Buttons */
 .btn {
@@ -110,13 +93,26 @@ body {
   padding: 12px 20px;
   font-size: 16px;
   color: white;
-  background: linear-gradient(45deg, #ff6600, #cc3300);
+  /* background: linear-gradient(45deg, #ff6600, #cc3300); */
+  background: blue;
   border-radius: 30px;
   text-decoration: none;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Instruction text */
+.location-text {
+  color: #b35900;
+  font-weight: bold;
+  margin-top: 15px;
 }
 
 /* Popup */
@@ -149,28 +145,40 @@ body {
   cursor: pointer;
 }
 
-/* ✅ CENTERED Welcome Popup */
+/* 💎 PREMIUM Welcome Popup (FIXED) */
 .welcome-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #b35900;
+  background: linear-gradient(45deg, #b35900, #ff6600);
   color: white;
   padding: 20px 30px;
   border-radius: 20px;
   font-size: 18px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
   z-index: 2000;
   text-align: center;
-  animation: fadeInOut 3s ease forwards;
+  animation: popupFade 3s ease forwards;
 }
 
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -70%); }
-  10% { opacity: 1; transform: translate(-50%, -50%); }
-  90% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -70%); }
+/* Smooth premium animation */
+@keyframes popupFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -70%) scale(0.9);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -70%) scale(0.9);
+  }
 }
 
 .hidden { display: none; }
@@ -205,27 +213,22 @@ body {
   <a href="#haladi" id="navHaladi"></a>
   <a href="#wedding" id="navWedding"></a>
   <a href="#contacts" id="navContact"></a>
+
+  <!-- Toggle moved here -->
+  <button onclick="toggleLang()" id="toggleBtn"></button>
 </div>
 
 <div class="container hidden" id="mainContent">
 
 <div class="card">
 
-<div id="ganeshaSection">
-  <img src="https://img.freepik.com/premium-photo/ganesha-aum-hindu-wedding-card-diwali-india_997657-2100.jpg">
-  <p id="ganeshaText">
-    वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br>
-    निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
-  </p>
-</div>
-
 <img id="inviteImg" src="Amit_wedding_invitation_card.jpeg" style="width:100%; border-radius:15px;">
 
 <h1 id="title"></h1>
 
-<a href="https://maps.app.goo.gl/4vidZrXgnBan2KW19" target="_blank" class="btn" id="mapBtn"></a>
+<p class="location-text" id="locationText"></p>
 
-<button onclick="toggleLang()" class="btn" id="toggleBtn"></button>
+<a href="https://maps.app.goo.gl/4vidZrXgnBan2KW19" target="_blank" class="btn" id="mapBtn"></a>
 
 </div>
 
@@ -277,11 +280,9 @@ function showWelcomeMessage() {
   const popup = document.getElementById("welcomePopup");
   const text = document.getElementById("welcomeText");
 
-  if (lang === 'en') {
-    text.innerText = "Hello!! A warm welcome from the Pardeshi family...!!!!";
-  } else {
-    text.innerText = "नमस्कार!! परदेशी परिवाराकडून तुमचं सहर्ष स्वागत आहे ...!!!!";
-  }
+  text.innerText = (lang === 'en')
+    ? "Hello!! A warm welcome from the Pardeshi family...!!!!"
+    : "नमस्कार!! परदेशी परिवाराकडून तुमचं सहर्ष स्वागत आहे ...!!!!";
 
   popup.classList.remove("hidden");
 
@@ -317,7 +318,7 @@ if (lang === 'en') {
   document.getElementById("title").innerText = "Amit Weds Kirti";
   document.getElementById("mapBtn").innerText = "📍 Event Location";
   document.getElementById("toggleBtn").innerText = "मराठीत बघा";
-  document.getElementById("ganeshaText").style.display = "none";
+  document.getElementById("locationText").innerText = "Click below button to see event location";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card.jpeg";
 
   document.getElementById("eventsTitle").innerText = "Events";
@@ -343,7 +344,7 @@ if (lang === 'en') {
   document.getElementById("title").innerText = "अमित आणि कीर्ती";
   document.getElementById("mapBtn").innerText = "📍 विवाहस्थळ";
   document.getElementById("toggleBtn").innerText = "Change to English";
-  document.getElementById("ganeshaText").style.display = "block";
+  document.getElementById("locationText").innerText = "खालील बटणावर क्लिक करून कार्यक्रमाचे ठिकाण पहा";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card_marathi.jpeg";
 
   document.getElementById("eventsTitle").innerText = "कार्यक्रम";
