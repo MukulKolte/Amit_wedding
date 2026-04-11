@@ -87,25 +87,31 @@ body {
 
 /* Buttons */
 .btn {
-  display: inline-block;
-  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   margin-left: 10px;
   padding: 12px 20px;
   font-size: 16px;
-  color: white;
-  /* background: linear-gradient(45deg, #ff6600, #cc3300); */
-  background: #61affe;
+  color: #3a2a00;
+  background: linear-gradient(45deg, #d4af37, #ffb84d);
   border-radius: 30px;
   text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.18);
   border: none;
   outline: none;
   cursor: pointer;
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.btn .pin {
+  font-size: 18px;
+  line-height: 1;
+  display: inline-block;
 }
 
 /* Instruction text */
@@ -328,8 +334,8 @@ function showWelcomeMessage() {
   const text = document.getElementById("welcomeText");
 
   text.innerText = (lang === 'en')
-    ? "Hello!! A warm welcome from the Pardeshi family...!!!!"
-    : "नमस्कार!! परदेशी परिवाराकडून तुमचं सहर्ष स्वागत आहे ...!!!!";
+    ? "Hello!! A warm welcome from the Pardeshi family...!!!! 🙏🏼"
+    : "नमस्कार!! परदेशी परिवाराकडून तुमचं सहर्ष स्वागत आहे ...!!!! 🙏🏼";
 
   popup.classList.remove("hidden");
 
@@ -363,9 +369,9 @@ function updateContent() {
 if (lang === 'en') {
 
   document.getElementById("title").innerText = "Amit 卐 Kirti";
-  document.getElementById("mapBtn").innerText = "📍 Event Location";
+  document.getElementById("mapBtn").innerHTML = "<span class='pin'>📍</span><span>Event Location</span>";
   document.getElementById("toggleBtn").innerText = "मराठीत बघा";
-  document.getElementById("locationText").innerText = "👇🏻 Click below button to see event location 👇🏻";
+  document.getElementById("locationText").innerText = "👇🏻 Click below button to see event location";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card.jpeg";
 
   document.getElementById("eventsTitle").innerHTML = "<span class=\"events-title-normal\">Events</span>";
@@ -389,9 +395,9 @@ if (lang === 'en') {
 } else {
 
   document.getElementById("title").innerText = "अमित 卐 किर्ती";
-  document.getElementById("mapBtn").innerText = "📍 विवाहस्थळ";
+  document.getElementById("mapBtn").innerHTML = "<span class='pin'>📍</span><span>विवाहस्थळ</span>";
   document.getElementById("toggleBtn").innerText = "View in English";
-  document.getElementById("locationText").innerText = "👇🏻 खालील बटणावर क्लिक करून कार्यक्रमाचे ठिकाण पहा 👇🏻";
+  document.getElementById("locationText").innerText = "👇🏻 खालील बटणावर क्लिक करून कार्यक्रमाचे ठिकाण पहा";
   document.getElementById("inviteImg").src = "Amit_wedding_invitation_card_marathi.jpeg";
 
   document.getElementById("eventsTitle").innerHTML = "<span class=\"events-title-normal\">कार्यक्रम</span>";
